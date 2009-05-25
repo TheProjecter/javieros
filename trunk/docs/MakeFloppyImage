@@ -1,0 +1,25 @@
+1.	dd if=/dev/zero bs=512 count=2880 of=floppy.img
+
+2.	losetup /dev/loop1 floppy.img
+
+3.	mkfs /dev/loop1
+
+4.	mount /dev/loop1 /mnt/javieros -o loop
+
+5.	mkdir -p /mnt/javieros/boot/grub
+
+6.	copy grub's stage1 & stage2 to /mnt/javieros/boot/grub, and add menu.lst
+	
+7.	umount /mnt/javieros
+
+8.	install grub into floppy.img:
+	
+	grub --device-map=/dev/null
+grub>  device (fd0) /dev/loop1 
+grub>  root (fd0)
+grub>  setup (fd0)
+grub>  quit
+
+9.	losetup -d /dev/loop1
+
+10. qemu -fda floppy.img 
