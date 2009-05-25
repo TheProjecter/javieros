@@ -1,0 +1,8 @@
+
+color white/blue black/light-gray
+default 0
+timeout 5
+
+title JavierOS
+    root (fd0)
+    kernel /os.bin
