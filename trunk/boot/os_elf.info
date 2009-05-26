@@ -1,0 +1,88 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Intel 80386
+  Version:                           0x1
+  Entry point address:               0x100000
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          12436 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         10
+  Section header string table index: 7
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        00100000 001000 001000 00  AX  0   0 16
+  [ 2] .rodata.str1.1    PROGBITS        00101000 002000 00006f 01 AMS  0   0  1
+  [ 3] .rodata.str1.4    PROGBITS        00101070 002070 000160 01 AMS  0   0  4
+  [ 4] .data             PROGBITS        001011d0 0021d0 000e30 00  WA  0   0  4
+  [ 5] .bss              NOBITS          00102000 003000 005000 00  WA  0   0 16
+  [ 6] .comment          PROGBITS        00000000 003000 000041 00      0   0  1
+  [ 7] .shstrtab         STRTAB          00000000 003041 000053 00      0   0  1
+  [ 8] .symtab           SYMTAB          00000000 003224 0001c0 10      9  16  4
+  [ 9] .strtab           STRTAB          00000000 0033e4 00009f 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x001000 0x00100000 0x00100000 0x02000 0x07000 RWE 0x1000
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text .rodata.str1.1 .rodata.str1.4 .data .bss 
+   01     
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+There are no unwind sections in this file.
+
+Symbol table '.symtab' contains 28 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00100000     0 SECTION LOCAL  DEFAULT    1 
+     2: 00101000     0 SECTION LOCAL  DEFAULT    2 
+     3: 00101070     0 SECTION LOCAL  DEFAULT    3 
+     4: 001011d0     0 SECTION LOCAL  DEFAULT    4 
+     5: 00102000     0 SECTION LOCAL  DEFAULT    5 
+     6: 00000000     0 SECTION LOCAL  DEFAULT    6 
+     7: 00100024     0 NOTYPE  LOCAL  DEFAULT    1 multiboot_entry
+     8: 00100004     0 NOTYPE  LOCAL  DEFAULT    1 multiboot_header
+     9: 00100040     0 NOTYPE  LOCAL  DEFAULT    1 halt_message
+    10: 0010003d     0 NOTYPE  LOCAL  DEFAULT    1 boot_halt
+    11: 00000000     0 FILE    LOCAL  DEFAULT  ABS kernel.c
+    12: 00100050   102 FUNC    LOCAL  DEFAULT    1 putchar
+    13: 00102004     4 OBJECT  LOCAL  DEFAULT    5 ypos
+    14: 00102000     4 OBJECT  LOCAL  DEFAULT    5 xpos
+    15: 00102008     4 OBJECT  LOCAL  DEFAULT    5 video
+    16: 00100210   608 FUNC    GLOBAL DEFAULT    1 cmain
+    17: 001000c0   334 FUNC    GLOBAL DEFAULT    1 printf
+    18: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS va
+    19: 00100000     0 NOTYPE  GLOBAL DEFAULT    1 _start
+    20: 00102000     0 NOTYPE  GLOBAL DEFAULT    5 bss
+    21: 001011d0     0 NOTYPE  GLOBAL DEFAULT    4 data
+    22: 00102000     0 NOTYPE  GLOBAL DEFAULT  ABS _edata
+    23: 00107000     0 NOTYPE  GLOBAL DEFAULT  ABS _end
+    24: 00100000     0 NOTYPE  GLOBAL DEFAULT    1 code
+    25: 00100000     0 NOTYPE  GLOBAL DEFAULT    1 start
+    26: 00102010 16384 OBJECT  GLOBAL DEFAULT    5 boot_stack
+    27: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS pa
+
+No version information found in this file.
