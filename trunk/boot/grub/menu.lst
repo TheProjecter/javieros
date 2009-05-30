@@ -5,4 +5,4 @@ timeout 5
 
 title JavierOS
     root (fd0)
-    kernel /os.bin
+    kernel /boot/os.bin
