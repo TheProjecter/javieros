@@ -67,15 +67,6 @@ multiboot_entry:
 	call boot_print_newline
 	call boot_print_newline
 	
-
-	/* init gdtr 1 */
-	lgdt TO_PA(pre_gdt_descr)
-	ljmp $(__KERNEL_CS), $TO_PA(1f)
-1:	movl $(__KERNEL_DS), %eax	/* set segments */
-	movl %eax, %ds
-	movl %eax, %es
-	movl %eax, %fs
-	movl %eax, %gs
 	/* init page tables */
 	movl $TO_PA(pg0), %edi
 	movl $007, %eax		/* PRESENT+RW+USER */
@@ -97,7 +88,7 @@ multiboot_entry:
 4:
 	/* set stack right */
 	movl $(boot_stack + BOOT_STACK_SIZE), %esp
-	/* reset gdtr 2 */
+	/* reset gdtr:2 (grub:1) */
 	lgdt gdt_descr
 	/* set segments */
 	ljmp $(__KERNEL_CS), $5f
@@ -235,15 +226,8 @@ idt:
 
 	.align 16, 0x90	
 	.word 0
-pre_gdt_descr:
-	.word 256 * 8 - 1
-	.long TO_PA(gdt_table)
-
-	.align 16, 0x90	
-	.word 0
 gdt_descr:
-//	.word GDTENTRIES * 8 - 1
-	.word 256 * 8 - 1
+	.word GDTENTRIES * 8 - 1
 gdt:
 	.long gdt_table
 

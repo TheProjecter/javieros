@@ -35,6 +35,3 @@ install:
 	install ./os.bin /mnt/jos/boot
 	umount /mnt/jos
 	sync
-
-fsck:
-	/sbin/fsck.ext2 ./floppy.img
