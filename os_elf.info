@@ -1,0 +1,132 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              EXEC (Executable file)
+  Machine:                           Intel 80386
+  Version:                           0x1
+  Entry point address:               0x100000
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          54240 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         2
+  Size of section headers:           40 (bytes)
+  Number of section headers:         16
+  Section header string table index: 13
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        c0100000 001000 00b008 00  AX  0   0 16
+  [ 2] .data             PROGBITS        c010b010 00c010 000888 00  WA  0   0 16
+  [ 3] .bss              NOBITS          c010c000 00c898 004380 00  WA  0   0 32
+  [ 4] .comment          PROGBITS        00000000 00c898 0000c3 00      0   0  1
+  [ 5] .debug_abbrev     PROGBITS        00000000 00c95b 000149 00      0   0  1
+  [ 6] .debug_info       PROGBITS        00000000 00caa4 000376 00      0   0  1
+  [ 7] .debug_line       PROGBITS        00000000 00ce1a 00017b 00      0   0  1
+  [ 8] .debug_frame      PROGBITS        00000000 00cf98 000034 00      0   0  4
+  [ 9] .debug_loc        PROGBITS        00000000 00cfcc 00002c 00      0   0  1
+  [10] .debug_pubnames   PROGBITS        00000000 00cff8 0000bb 00      0   0  1
+  [11] .debug_aranges    PROGBITS        00000000 00d0b8 000040 00      0   0  8
+  [12] .debug_str        PROGBITS        00000000 00d0f8 00024a 01  MS  0   0  1
+  [13] .shstrtab         STRTAB          00000000 00d342 00009d 00      0   0  1
+  [14] .symtab           SYMTAB          00000000 00d660 000420 10     15  35  4
+  [15] .strtab           STRTAB          00000000 00da80 000215 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings)
+  I (info), L (link order), G (group), x (unknown)
+  O (extra OS processing required) o (OS specific), p (processor specific)
+
+There are no section groups in this file.
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x001000 0xc0100000 0x00100000 0x0b898 0x10380 RWE 0x1000
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text .data .bss 
+   01     
+
+There is no dynamic section in this file.
+
+There are no relocations in this file.
+
+There are no unwind sections in this file.
+
+Symbol table '.symtab' contains 66 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: c0100000     0 SECTION LOCAL  DEFAULT    1 
+     2: c010b010     0 SECTION LOCAL  DEFAULT    2 
+     3: c010c000     0 SECTION LOCAL  DEFAULT    3 
+     4: 00000000     0 SECTION LOCAL  DEFAULT    4 
+     5: 00000000     0 SECTION LOCAL  DEFAULT    5 
+     6: 00000000     0 SECTION LOCAL  DEFAULT    6 
+     7: 00000000     0 SECTION LOCAL  DEFAULT    7 
+     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
+    10: 00000000     0 SECTION LOCAL  DEFAULT   10 
+    11: 00000000     0 SECTION LOCAL  DEFAULT   11 
+    12: 00000000     0 SECTION LOCAL  DEFAULT   12 
+    13: c0100025     0 NOTYPE  LOCAL  DEFAULT    1 multiboot_entry
+    14: c0100004     0 NOTYPE  LOCAL  DEFAULT    1 multiboot_header
+    15: c010010e     0 NOTYPE  LOCAL  DEFAULT    1 boot_clear_screen
+    16: c010b870     0 NOTYPE  LOCAL  DEFAULT    2 hello_msg
+    17: c0100150     0 NOTYPE  LOCAL  DEFAULT    1 boot_print_str
+    18: c01001ac     0 NOTYPE  LOCAL  DEFAULT    1 boot_print_newline
+    19: c0100202     0 NOTYPE  LOCAL  DEFAULT    1 pre_gdt_descr
+    20: c0100212     0 NOTYPE  LOCAL  DEFAULT    1 gdt_descr
+    21: c01001bf     0 NOTYPE  LOCAL  DEFAULT    1 setup_idt
+    22: c01001f2     0 NOTYPE  LOCAL  DEFAULT    1 idt_descr
+    23: c010b884     0 NOTYPE  LOCAL  DEFAULT    2 hlt_msg
+    24: c010010b     0 NOTYPE  LOCAL  DEFAULT    1 boot_halt
+    25: c0100127     0 NOTYPE  LOCAL  DEFAULT    1 do_clr_screen
+    26: c010013b     0 NOTYPE  LOCAL  DEFAULT    1 done_clr_screen
+    27: c010015e     0 NOTYPE  LOCAL  DEFAULT    1 fin
+    28: c010015f     0 NOTYPE  LOCAL  DEFAULT    1 boot_prt_chr
+    29: c01001ab     0 NOTYPE  LOCAL  DEFAULT    1 no_newline
+    30: c01001be     0 NOTYPE  LOCAL  DEFAULT    1 ignore_init
+    31: c01001dc     0 NOTYPE  LOCAL  DEFAULT    1 rp_sidt
+    32: 00000000     0 FILE    LOCAL  DEFAULT  ABS init.c
+    33: 00000000     0 FILE    LOCAL  DEFAULT  ABS memory.c
+    34: 00000000     0 FILE    LOCAL  DEFAULT  ABS printk.c
+    35: c0103000     0 NOTYPE  GLOBAL DEFAULT    1 pg1
+    36: c010b020     0 NOTYPE  GLOBAL DEFAULT    2 gdt_table
+    37: c010b018     4 OBJECT  GLOBAL DEFAULT    2 mmap_table_length
+    38: c010c304     4 OBJECT  GLOBAL DEFAULT    3 console_pos_y
+    39: c010b008     0 NOTYPE  GLOBAL DEFAULT  ABS _etext
+    40: c010b010     4 OBJECT  GLOBAL DEFAULT    2 multiboot_magic
+    41: c010b014     4 OBJECT  GLOBAL DEFAULT    2 mbi
+    42: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS _pa_start
+    43: c0100214     0 NOTYPE  GLOBAL DEFAULT    1 gdt
+    44: c0104000     0 NOTYPE  GLOBAL DEFAULT    1 pg2
+    45: c010c000   768 OBJECT  GLOBAL DEFAULT    3 mmap_table
+    46: c010a000     0 NOTYPE  GLOBAL DEFAULT    1 empty_zero_page
+    47: c0101000     0 NOTYPE  GLOBAL DEFAULT    1 swapper_pg_dir
+    48: c0108000     0 NOTYPE  GLOBAL DEFAULT    1 pg6
+    49: c0100000     0 NOTYPE  GLOBAL DEFAULT    1 _va_start
+    50: c010c320    90 OBJECT  GLOBAL DEFAULT    3 mbi_buffer
+    51: c0106000     0 NOTYPE  GLOBAL DEFAULT    1 pg4
+    52: c0100000     0 NOTYPE  GLOBAL DEFAULT  ABS _text
+    53: c0109000     0 NOTYPE  GLOBAL DEFAULT    1 pg7
+    54: c010c000     0 NOTYPE  GLOBAL DEFAULT  ABS __bss_start
+    55: c0000000     0 NOTYPE  GLOBAL DEFAULT  ABS LOAD_OFFSET
+    56: c010b000     5 FUNC    GLOBAL DEFAULT    1 start_kernel
+    57: c0105000     0 NOTYPE  GLOBAL DEFAULT    1 pg3
+    58: c01001f4     0 NOTYPE  GLOBAL DEFAULT    1 idt
+    59: c0102000     0 NOTYPE  GLOBAL DEFAULT    1 pg0
+    60: c010b898     0 NOTYPE  GLOBAL DEFAULT  ABS _edata
+    61: c0110380     0 NOTYPE  GLOBAL DEFAULT  ABS _end
+    62: c010c300     4 OBJECT  GLOBAL DEFAULT    3 console_pos_x
+    63: c0107000     0 NOTYPE  GLOBAL DEFAULT    1 pg5
+    64: c010b070     0 NOTYPE  GLOBAL DEFAULT    2 idt_table
+    65: c010c380 16384 OBJECT  GLOBAL DEFAULT    3 boot_stack
+
+No version information found in this file.

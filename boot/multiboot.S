@@ -121,7 +121,7 @@ multiboot_entry:
 	/* call C code
 	 * The start_kernel completes the initialization of the kernel
 	 */
-/*	call start_kernel*/
+	call start_kernel
 	
 	call boot_print_newline
 	movl $hlt_msg, %esi

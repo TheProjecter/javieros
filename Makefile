@@ -23,8 +23,8 @@ all: clean
 	$(CC) $(CFLAGS) -c $(C_SOURCES)
 	ld *.o -T $(LDS) -o os.bin
 	@rm -f *.o
-#	@nm os.bin > System.map
-#	@readelf -a os.bin > os_elf.info
+	@nm os.bin > System.map
+	@readelf -a os.bin > os_elf.info
 
 clean:
 	rm -f *.o os.bin
