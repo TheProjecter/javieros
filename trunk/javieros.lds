@@ -12,6 +12,7 @@ SECTIONS
 
 	_text = .;
 	.text : AT(ADDR(.text) - LOAD_OFFSET) {
+		multiboot.o(.text)
 		*(.text)
 	} = 0x9090
 	_etext = .;
