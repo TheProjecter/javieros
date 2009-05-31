@@ -19,8 +19,8 @@ CFLAGS = $(INCLUDES) $(GENERAL_FLAGS) -O2 -Wall -D__KERNEL__
 ASMFLAGS = $(INCLUDES) $(GENERAL_FLAGS) -O2 -Wall -D__KERNEL__ -D__ASM__
 
 all: clean
-	$(CC) $(CFLAGS) -c $(C_SOURCES)
 	$(CC) $(ASMFLAGS) -c $(ASM_SOURCES)
+	$(CC) $(CFLAGS) -c $(C_SOURCES)
 	ld *.o -T $(LDS) -o os.bin
 	@rm -f *.o
 #	@nm os.bin > System.map

@@ -98,9 +98,6 @@ multiboot_entry:
 	/* set stack right */
 	movl $(boot_stack + BOOT_STACK_SIZE), %esp
 	/* reset gdtr 2 */
-	movl $boot_init_gdtr, %esi
-	call boot_print_str
-	call boot_print_newline
 	lgdt gdt_descr
 	/* set segments */
 	ljmp $(__KERNEL_CS), $5f
@@ -239,13 +236,14 @@ idt:
 	.align 16, 0x90	
 	.word 0
 pre_gdt_descr:
-	.word GDTENTRIES * 8 - 1
+	.word 256 * 8 - 1
 	.long TO_PA(gdt_table)
 
 	.align 16, 0x90	
 	.word 0
 gdt_descr:
-	.word GDTENTRIES * 8 - 1
+//	.word GDTENTRIES * 8 - 1
+	.word 256 * 8 - 1
 gdt:
 	.long gdt_table
 
@@ -314,9 +312,6 @@ idt_table:
 
 hello_msg:
 	.asciz "Welcome to JavierOS"
-
-boot_init_gdtr:
-	.asciz "init gdt at 0xC0100000."
 
 hlt_msg:
 	.asciz "Halted............."
