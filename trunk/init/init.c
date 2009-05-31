@@ -3,7 +3,7 @@
 unsigned long multiboot_magic = -1;
 
 int init_memory(void);
-//int init_
+
 
 void start_kernel()
 {
@@ -11,4 +11,6 @@ void start_kernel()
 	{
 		return;
 	}
+
+	return;
 }
