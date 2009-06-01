@@ -7,9 +7,14 @@ int init_memory(void);
 
 void start_kernel()
 {
-	if (multiboot_magic == MULTIBOOT_BOOTLOADER_MAGIC)
+	clear_screen();
+
+	if (multiboot_magic != MULTIBOOT_BOOTLOADER_MAGIC)
 	{
+		printk("invalid multiboot magic number:`0x%x'.\n", multiboot_magic);
 		return;
 	}
+
+	printk("Welcom to JavierOS :)\n");
 
 }

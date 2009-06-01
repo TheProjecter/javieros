@@ -33,12 +33,12 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xb655f008. after alignment, vector=0xb6560000
+00000000000i[MEM0 ] allocated memory at 0xb657e008. after alignment, vector=0xb657f000
 00000000000i[MEM0 ] 16.00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/usr/local/share/bochs/VGABIOS-elpin-2.40')
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Sun May 31 17:02:48 2009 (time0=1243760568)
+00000000000i[CMOS ] Setting initial clock to: Mon Jun  1 20:17:49 2009 (time0=1243858669)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: 'floppy.img' ro=0, h=2,t=80,spt=18
@@ -81,9 +81,6 @@
 00000000000i[     ] reset of 'serial' plugin device by virtual method
 00000000000i[     ] reset of 'parallel' plugin device by virtual method
 00000000000i[XGUI ] [x] Mouse off
-00000000000i[GDBST] addr fff0 len 8
-00000000000i[GDBST] addr fff0 len 7
-00000000000i[GDBST] setting breakpoint at 100000
 00000003305i[BIOS ] $Revision: 1.231 $ $Date: 2009/04/26 17:17:07 $
 00000316821i[KBD  ] reset-disable command received
 00000600000i[XGUI ] charmap update. Font Height is 16
@@ -100,14 +97,5 @@
 00009941107i[BIOS ] int13_harddisk: function 41, unmapped device for ELDL=80
 00009945884i[BIOS ] int13_harddisk: function 08, unmapped device for ELDL=80
 00009950543i[BIOS ] *** int 15h function AX=00c0, BX=0000 not yet supported!
-00021108321i[GDBST] found breakpoint at 100000
-00021108321i[GDBST] stopped with ac1
-00021108321i[GDBST] reg 8 set to 100000
-00021108321i[GDBST] reg 41 set to ffffffff
-00021108321i[GDBST] Removing breakpoint at 100000
-00021108321i[GDBST] addr 100000 len 8
-00021108321i[GDBST] addr 100000 len 7
-00021108321i[GDBST] stepping
-00021108322i[GDBST] stopped with ac2
-00021108322i[GDBST] setting breakpoint at 100000
-00021191639i[CPU0 ] WARNING: HLT instruction with IF=0!
+00021852417i[CPU0 ] WARNING: HLT instruction with IF=0!
+00194700000p[     ] >>PANIC<< SIGNAL 2 caught
