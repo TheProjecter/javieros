@@ -1,0 +1,137 @@
+#include <javieros/tty.h>
+#include <javieros/kernel.h>
+#include <javieros/types.h>
+#include <javieros/stdarg.h>
+#include <asm/system.h>
+#include <asm/string.h>
+#include <asm/page.h>
+
+#define END_OF_KMESS -1
+
+volatile int console_pos_x = 0;
+volatile int console_pos_y = 0;
+
+static void screen_scrollup(void)
+{
+	char * video_entry = (char *)VIDEO_VA;
+
+	memcpy((char *) video_entry, 
+			(char *) (video_entry + TTY_COLUMNS_NR * 2), 
+			(TTY_LINES_NR - 1) * TTY_COLUMNS_NR * 2);
+//TODO:
+}
+
+static void kputc(int c)
+{
+	int pad_nr = 0;
+	if (c < 0)
+		return;
+	if (c == 0)
+		c = '@';
+
+	if (console_pos_x >= TTY_COLUMNS_NR) {
+		console_pos_x = 0;
+		console_pos_y += 1;
+	}
+	if (console_pos_y >= TTY_LINES_NR) {
+		screen_scrollup();
+		console_pos_y -= 1;
+	}
+	//TODO:
+
+}
+
+void printk(const char *fmt, ...)
+{
+	int c;
+	int d;
+	unsigned long u;
+	int base;
+	int negative;
+	static char digit[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+	char ascii[8 * sizeof(long) / 3 + 2];
+	char *s;
+	char s_buf[16];
+	char ch;
+	va_list argp;
+	int flags;
+
+	local_irq_save(flags);
+	va_start(argp, fmt);
+	while ((c = *fmt++) != 0)
+	{
+		if (c == '%')
+		{
+			negative = 0;
+			s = NULL;
+			
+			switch(c = *fmt++)
+			{
+			case 'd':
+				d = va_arg(argp, signed int);
+				if (d < 0)
+				{
+					negative = 1;
+					u = -d;
+				} else {
+					u = d;
+				}
+				base = 10;
+				break;
+			case 'u':
+				u = va_arg(argp, unsigned long);
+				base = 10;
+				break;
+			case 'x':
+				u = va_arg(argp, unsigned long);
+				base = 0x10;
+				break;
+			case 's':
+				s = va_arg(argp, char *);
+				if (s == NULL )
+					s = "(null)"
+				break;
+			case 'c':
+				ch = va_arg(argp, char);
+				if (ch == 0)
+					s = "(NUL)"
+				else {
+					memset(s_buf, 0, sizeof(s_buf));
+					s_buf[0] = ch;
+					s = (char *)s_buf;
+				}
+				break;
+			case '%':
+				s = "%";
+				break;
+
+			default:
+				memset(s_buf, 0, sizeof(s_buf));
+				s_buf[0] = '%';
+				s_buf[1] = (char) c;
+				s = (char *)s_buf;
+			}
+
+			if (s == NULL)
+			{
+				s = ascii + sizeof(ascii) - 1;
+				*s = 0;
+
+				do {
+					*--s = x2c[(u % base)];
+				} while ((u = u / base) > 0);
+			}
+
+			if (negative)
+				kputc('-');
+			while (*s != 0)
+				kputc(*s++);
+		} else {
+			kputc(c);
+		}
+	} /* while */
+
+	kputc(END_OF_KMESS);
+	va_end(argp);
+	local_irq_restore(flags);
+}

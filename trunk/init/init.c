@@ -7,10 +7,9 @@ int init_memory(void);
 
 void start_kernel()
 {
-	if (multiboot_magic != MULTIBOOT_BOOTLOADER_MAGIC)
+	if (multiboot_magic == MULTIBOOT_BOOTLOADER_MAGIC)
 	{
 		return;
 	}
 
-	return;
 }
