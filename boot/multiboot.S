@@ -56,16 +56,6 @@ multiboot_entry:
 	movl %ecx, TO_PA(mmap_table_length)
 	movl $TO_PA(mmap_table), %edi
 	rep movsl
-
-	/* clear screen and init video(0xB8000), xpos, ypos
-	 * REF: docs/multiboot_spec.txt(kernel.c)
-	 */
-	call boot_clear_screen
-	/* say hello */
-	movl $TO_PA(hello_msg), %esi
-	call boot_print_str
-	call boot_print_newline
-	call boot_print_newline
 	
 	/* init page tables */
 	movl $TO_PA(pg0), %edi
@@ -113,88 +103,11 @@ multiboot_entry:
 	 * The start_kernel completes the initialization of the kernel
 	 */
 	call start_kernel
-	
-	call boot_print_newline
-	movl $hlt_msg, %esi
-	call boot_print_str
+
 boot_halt:
 	hlt
 	jmp boot_halt
 	
-
-/* FROM boot_clear_screen TO done_clr_screen.
- * Just like :
- * clear_screen(void) {
- * 		for (i = 0; i < COLUMNS_NR * LINES_NR * 2; i++)
- *       	*((ul *)0xB8000 + i) = 0;
- *   
- *  	xpos = 0;
- *  	ypos = 0;
- * }
- */
-boot_clear_screen:
-	xorl	%eax, %eax
-	xorl	%ebx, %ebx
-	xorl	%ecx, %ecx
-	movw	$TTY_COLUMNS_NR, %ax
-	movw	$TTY_LINES_NR, %bx
-	mulb	%bl
-	shll	$0x1, %eax
-	movl	$0x0, %ecx
-	movl	%eax, %ecx
-do_clr_screen:
-	movl	$VIDEO_PA, %edi
-	addl	%ecx, %edi
-	decl	%edi
-	movb	$0, (%edi)
-	decw	%cx
-	cmpl	$0, %ecx
-	jz	done_clr_screen
-	jmp	do_clr_screen
-done_clr_screen:
-	movl	$0, (TO_PA(console_pos_x))
-	movl	$0, (TO_PA(console_pos_y))
-	ret
-
-/* the address of str stored in ds:si */
-boot_print_str:
-	xorl	%eax, %eax
-	lodsb
-	andb	%al, %al
-	jz	fin
-	call	boot_prt_chr
-	jmp	boot_print_str
-fin:	ret
-/* the char to print stored in al */
-boot_prt_chr:
-	xorl	%ecx, %ecx
-	movb	%al, %cl
-	xorl	%eax, %eax
-	xorl	%ebx, %ebx
-	movl	(TO_PA(console_pos_y)), %eax
-	movb	$TTY_COLUMNS_NR, %bl
-	mulb	%bl
-	addl	(TO_PA(console_pos_x)), %eax
-	shlw	$0x1, %ax
-	addl	$VIDEO_PA, %eax
-	movl	%eax, %edi
-	movb	%cl, (%edi)
-	addl	$1, %eax
-	movl	%eax, %edi
-	movb	$0x7, (%edi)
-	addl	$1, (TO_PA(console_pos_x))
-	cmpl	$TTY_COLUMNS_NR, (TO_PA(console_pos_x))
-	jnz	no_newline
-	movl	$0x0, (TO_PA(console_pos_x))
-	addl	$0x1, (TO_PA(console_pos_y))
-no_newline:
-	ret
-
-boot_print_newline:
-	movl	$0x0, (TO_PA(console_pos_x))
-	addl	$0x1, (TO_PA(console_pos_y))
-	ret
-
 /* default interrupt handler(just a iret) */
 ignore_init:
 	iret
@@ -293,12 +206,5 @@ gdt_table:
 .globl idt_table
 idt_table:
 	.fill 256, 8, 0
-
-hello_msg:
-	.asciz "Welcome to JavierOS"
-
-hlt_msg:
-	.asciz "Halted............."
-
 
 .comm boot_stack, BOOT_STACK_SIZE

@@ -2,7 +2,7 @@
 #define __SYSTEM_H
 
 #define __save_flags(x) \
-	__asm__ __volatiile_("pushfl; popl %0" \
+	__asm__ __volatile__("pushfl; popl %0" \
 			:"=g"(x):)
 
 #define __restore_flags(x) \
