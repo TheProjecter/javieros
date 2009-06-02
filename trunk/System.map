@@ -9,8 +9,8 @@ c0100000 T _va_start
 c01000c8 t boot_halt
 c010d380 B boot_stack
 c010b0d0 T clear_screen
-c010d300 B console_pos_x
-c010d304 B console_pos_y
+c010d304 B console_pos_x
+c010d308 B console_pos_y
 c010a000 T empty_zero_page
 c0100114 T gdt
 c0100112 t gdt_descr
@@ -28,7 +28,7 @@ c010b730 T memmove
 c010b7b0 T memscan
 c010b6d0 T memset
 c010d000 B mmap_table
-c010b838 D mmap_table_length
+c010d300 B mmap_table_length
 c0100025 t multiboot_entry
 c0100004 t multiboot_header
 c010b830 D multiboot_magic
