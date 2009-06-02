@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x100000
   Start of program headers:          52 (bytes into file)
-  Start of section headers:          64312 (bytes into file)
+  Start of section headers:          64832 (bytes into file)
   Flags:                             0x0
   Size of this header:               52 (bytes)
   Size of program headers:           32 (bytes)
@@ -22,22 +22,22 @@ ELF Header:
 Section Headers:
   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
-  [ 1] .text             PROGBITS        c0100000 001000 00b7cb 00  AX  0   0 16
-  [ 2] .rodata           PROGBITS        c010b7cc 00c7cc 000062 00   A  0   0  4
-  [ 3] .data             PROGBITS        c010b830 00c830 000864 00  WA  0   0 16
-  [ 4] .bss              NOBITS          c010d000 00d094 004380 00  WA  0   0 32
-  [ 5] .comment          PROGBITS        00000000 00d094 000104 00      0   0  1
-  [ 6] .debug_abbrev     PROGBITS        00000000 00d198 0003b9 00      0   0  1
-  [ 7] .debug_info       PROGBITS        00000000 00d551 000d7f 00      0   0  1
-  [ 8] .debug_line       PROGBITS        00000000 00e2d0 00030e 00      0   0  1
-  [ 9] .debug_frame      PROGBITS        00000000 00e5e0 000430 00      0   0  4
-  [10] .debug_loc        PROGBITS        00000000 00ea10 000a3e 00      0   0  1
-  [11] .debug_pubnames   PROGBITS        00000000 00f44e 0001f5 00      0   0  1
-  [12] .debug_aranges    PROGBITS        00000000 00f648 000080 00      0   0  8
-  [13] .debug_str        PROGBITS        00000000 00f6c8 0003c9 01  MS  0   0  1
-  [14] .shstrtab         STRTAB          00000000 00fa91 0000a5 00      0   0  1
-  [15] .symtab           SYMTAB          00000000 00fde0 000520 10     16  29  4
-  [16] .strtab           STRTAB          00000000 010300 00027b 00      0   0  1
+  [ 1] .text             PROGBITS        c0100000 001000 00b81b 00  AX  0   0 16
+  [ 2] .rodata           PROGBITS        c010b81c 00c81c 0000ab 00   A  0   0  4
+  [ 3] .data             PROGBITS        c010b8d0 00c8d0 000864 00  WA  0   0 16
+  [ 4] .bss              NOBITS          c010d000 00d134 004380 00  WA  0   0 32
+  [ 5] .comment          PROGBITS        00000000 00d134 000104 00      0   0  1
+  [ 6] .debug_abbrev     PROGBITS        00000000 00d238 00040f 00      0   0  1
+  [ 7] .debug_info       PROGBITS        00000000 00d647 000dda 00      0   0  1
+  [ 8] .debug_line       PROGBITS        00000000 00e421 000323 00      0   0  1
+  [ 9] .debug_frame      PROGBITS        00000000 00e744 000464 00      0   0  4
+  [10] .debug_loc        PROGBITS        00000000 00eba8 000a6a 00      0   0  1
+  [11] .debug_pubnames   PROGBITS        00000000 00f612 000205 00      0   0  1
+  [12] .debug_aranges    PROGBITS        00000000 00f818 0000a0 00      0   0  8
+  [13] .debug_str        PROGBITS        00000000 00f8b8 0003e0 01  MS  0   0  1
+  [14] .shstrtab         STRTAB          00000000 00fc98 0000a5 00      0   0  1
+  [15] .symtab           SYMTAB          00000000 00ffe8 000530 10     16  29  4
+  [16] .strtab           STRTAB          00000000 010518 000287 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings)
   I (info), L (link order), G (group), x (unknown)
@@ -47,7 +47,7 @@ There are no section groups in this file.
 
 Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  LOAD           0x001000 0xc0100000 0x00100000 0x0c094 0x11380 RWE 0x1000
+  LOAD           0x001000 0xc0100000 0x00100000 0x0c134 0x11380 RWE 0x1000
   GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x4
 
  Section to Segment mapping:
@@ -61,12 +61,12 @@ There are no relocations in this file.
 
 There are no unwind sections in this file.
 
-Symbol table '.symtab' contains 82 entries:
+Symbol table '.symtab' contains 83 entries:
    Num:    Value  Size Type    Bind   Vis      Ndx Name
      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: c0100000     0 SECTION LOCAL  DEFAULT    1 
-     2: c010b7cc     0 SECTION LOCAL  DEFAULT    2 
-     3: c010b830     0 SECTION LOCAL  DEFAULT    3 
+     2: c010b81c     0 SECTION LOCAL  DEFAULT    2 
+     3: c010b8d0     0 SECTION LOCAL  DEFAULT    3 
      4: c010d000     0 SECTION LOCAL  DEFAULT    4 
      5: 00000000     0 SECTION LOCAL  DEFAULT    5 
      6: 00000000     0 SECTION LOCAL  DEFAULT    6 
@@ -88,62 +88,63 @@ Symbol table '.symtab' contains 82 entries:
     22: 00000000     0 FILE    LOCAL  DEFAULT  ABS init.c
     23: 00000000     0 FILE    LOCAL  DEFAULT  ABS memory.c
     24: 00000000     0 FILE    LOCAL  DEFAULT  ABS printk.c
-    25: c010b040    32 FUNC    LOCAL  DEFAULT    1 screen_putc
-    26: c010b140   346 FUNC    LOCAL  DEFAULT    1 kputc
-    27: c010b7cc    17 OBJECT  LOCAL  DEFAULT    2 x2c.1032
+    25: c010b090    32 FUNC    LOCAL  DEFAULT    1 screen_putc
+    26: c010b190   346 FUNC    LOCAL  DEFAULT    1 kputc
+    27: c010b81c    17 OBJECT  LOCAL  DEFAULT    2 x2c.1032
     28: 00000000     0 FILE    LOCAL  DEFAULT  ABS string.c
-    29: c010b480    40 FUNC    GLOBAL DEFAULT    1 strcpy
-    30: c010b7b0    27 FUNC    GLOBAL DEFAULT    1 memscan
+    29: c010b4d0    40 FUNC    GLOBAL DEFAULT    1 strcpy
+    30: c010b800    27 FUNC    GLOBAL DEFAULT    1 memscan
     31: c0103000     0 NOTYPE  GLOBAL DEFAULT    1 pg1
-    32: c010b840     0 NOTYPE  GLOBAL DEFAULT    3 gdt_table
+    32: c010b8e0     0 NOTYPE  GLOBAL DEFAULT    3 gdt_table
     33: c010d300     4 OBJECT  GLOBAL DEFAULT    4 mmap_table_length
-    34: c010b730    71 FUNC    GLOBAL DEFAULT    1 memmove
+    34: c010b780    71 FUNC    GLOBAL DEFAULT    1 memmove
     35: c010d308     4 OBJECT  GLOBAL DEFAULT    4 console_pos_y
-    36: c010b7cb     0 NOTYPE  GLOBAL DEFAULT  ABS _etext
-    37: c010b830     4 OBJECT  GLOBAL DEFAULT    3 multiboot_magic
-    38: c010b6f0    55 FUNC    GLOBAL DEFAULT    1 memcpy
-    39: c010b834     4 OBJECT  GLOBAL DEFAULT    3 mbi
+    36: c010b81b     0 NOTYPE  GLOBAL DEFAULT  ABS _etext
+    37: c010b8d0     4 OBJECT  GLOBAL DEFAULT    3 multiboot_magic
+    38: c010b740    55 FUNC    GLOBAL DEFAULT    1 memcpy
+    39: c010b8d4     4 OBJECT  GLOBAL DEFAULT    3 mbi
     40: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS _pa_start
     41: c0100114     0 NOTYPE  GLOBAL DEFAULT    1 gdt
     42: c0104000     0 NOTYPE  GLOBAL DEFAULT    1 pg2
     43: c010d000   768 OBJECT  GLOBAL DEFAULT    4 mmap_table
     44: c010a000     0 NOTYPE  GLOBAL DEFAULT    1 empty_zero_page
     45: c0101000     0 NOTYPE  GLOBAL DEFAULT    1 swapper_pg_dir
-    46: c010b660    29 FUNC    GLOBAL DEFAULT    1 strnlen
-    47: c010b610    48 FUNC    GLOBAL DEFAULT    1 strrchr
-    48: c010b080    18 FUNC    GLOBAL DEFAULT    1 set_screen_pos_y
+    46: c010b6b0    29 FUNC    GLOBAL DEFAULT    1 strnlen
+    47: c010b660    48 FUNC    GLOBAL DEFAULT    1 strrchr
+    48: c010b0d0    18 FUNC    GLOBAL DEFAULT    1 set_screen_pos_y
     49: c0108000     0 NOTYPE  GLOBAL DEFAULT    1 pg6
-    50: c010b4f0    58 FUNC    GLOBAL DEFAULT    1 strcat
-    51: c010b780    36 FUNC    GLOBAL DEFAULT    1 memchr
-    52: c010b680    65 FUNC    GLOBAL DEFAULT    1 strstr
+    50: c010b540    58 FUNC    GLOBAL DEFAULT    1 strcat
+    51: c010b7d0    36 FUNC    GLOBAL DEFAULT    1 memchr
+    52: c010b6d0    65 FUNC    GLOBAL DEFAULT    1 strstr
     53: c0100000     0 NOTYPE  GLOBAL DEFAULT    1 _va_start
     54: c010d320    90 OBJECT  GLOBAL DEFAULT    4 mbi_buffer
-    55: c010b5b0    52 FUNC    GLOBAL DEFAULT    1 strncmp
-    56: c010b4b0    56 FUNC    GLOBAL DEFAULT    1 strncpy
-    57: c0106000     0 NOTYPE  GLOBAL DEFAULT    1 pg4
-    58: c010b2a0   470 FUNC    GLOBAL DEFAULT    1 printk
-    59: c010b530    69 FUNC    GLOBAL DEFAULT    1 strncat
-    60: c0100000     0 NOTYPE  GLOBAL DEFAULT  ABS _text
-    61: c0109000     0 NOTYPE  GLOBAL DEFAULT    1 pg7
-    62: c010d000     0 NOTYPE  GLOBAL DEFAULT  ABS __bss_start
-    63: c010b6d0    23 FUNC    GLOBAL DEFAULT    1 memset
-    64: c0000000     0 NOTYPE  GLOBAL DEFAULT  ABS LOAD_OFFSET
-    65: c010b000    62 FUNC    GLOBAL DEFAULT    1 start_kernel
-    66: c0105000     0 NOTYPE  GLOBAL DEFAULT    1 pg3
-    67: c010c090     4 OBJECT  GLOBAL DEFAULT    3 screen_char_attr
-    68: c010b0a0    40 FUNC    GLOBAL DEFAULT    1 set_screen_pos_xy
-    69: c010b580    46 FUNC    GLOBAL DEFAULT    1 strcmp
-    70: c0100104     0 NOTYPE  GLOBAL DEFAULT    1 idt
-    71: c0102000     0 NOTYPE  GLOBAL DEFAULT    1 pg0
-    72: c010b060    18 FUNC    GLOBAL DEFAULT    1 set_screen_pos_x
-    73: c010c094     0 NOTYPE  GLOBAL DEFAULT  ABS _edata
-    74: c0111380     0 NOTYPE  GLOBAL DEFAULT  ABS _end
-    75: c010d304     4 OBJECT  GLOBAL DEFAULT    4 console_pos_x
-    76: c0107000     0 NOTYPE  GLOBAL DEFAULT    1 pg5
-    77: c010b890     0 NOTYPE  GLOBAL DEFAULT    3 idt_table
-    78: c010b640    24 FUNC    GLOBAL DEFAULT    1 strlen
-    79: c010d380 16384 OBJECT  GLOBAL DEFAULT    4 boot_stack
-    80: c010b5f0    32 FUNC    GLOBAL DEFAULT    1 strchr
-    81: c010b0d0   101 FUNC    GLOBAL DEFAULT    1 clear_screen
+    55: c010b600    52 FUNC    GLOBAL DEFAULT    1 strncmp
+    56: c010b500    56 FUNC    GLOBAL DEFAULT    1 strncpy
+    57: c010b060    39 FUNC    GLOBAL DEFAULT    1 init_memory
+    58: c0106000     0 NOTYPE  GLOBAL DEFAULT    1 pg4
+    59: c010b2f0   470 FUNC    GLOBAL DEFAULT    1 printk
+    60: c010b580    69 FUNC    GLOBAL DEFAULT    1 strncat
+    61: c0100000     0 NOTYPE  GLOBAL DEFAULT  ABS _text
+    62: c0109000     0 NOTYPE  GLOBAL DEFAULT    1 pg7
+    63: c010d000     0 NOTYPE  GLOBAL DEFAULT  ABS __bss_start
+    64: c010b720    23 FUNC    GLOBAL DEFAULT    1 memset
+    65: c0000000     0 NOTYPE  GLOBAL DEFAULT  ABS LOAD_OFFSET
+    66: c010b000    83 FUNC    GLOBAL DEFAULT    1 start_kernel
+    67: c0105000     0 NOTYPE  GLOBAL DEFAULT    1 pg3
+    68: c010c130     4 OBJECT  GLOBAL DEFAULT    3 screen_char_attr
+    69: c010b0f0    40 FUNC    GLOBAL DEFAULT    1 set_screen_pos_xy
+    70: c010b5d0    46 FUNC    GLOBAL DEFAULT    1 strcmp
+    71: c0100104     0 NOTYPE  GLOBAL DEFAULT    1 idt
+    72: c0102000     0 NOTYPE  GLOBAL DEFAULT    1 pg0
+    73: c010b0b0    18 FUNC    GLOBAL DEFAULT    1 set_screen_pos_x
+    74: c010c134     0 NOTYPE  GLOBAL DEFAULT  ABS _edata
+    75: c0111380     0 NOTYPE  GLOBAL DEFAULT  ABS _end
+    76: c010d304     4 OBJECT  GLOBAL DEFAULT    4 console_pos_x
+    77: c0107000     0 NOTYPE  GLOBAL DEFAULT    1 pg5
+    78: c010b930     0 NOTYPE  GLOBAL DEFAULT    3 idt_table
+    79: c010b690    24 FUNC    GLOBAL DEFAULT    1 strlen
+    80: c010d380 16384 OBJECT  GLOBAL DEFAULT    4 boot_stack
+    81: c010b640    32 FUNC    GLOBAL DEFAULT    1 strchr
+    82: c010b120   101 FUNC    GLOBAL DEFAULT    1 clear_screen
 
 No version information found in this file.
