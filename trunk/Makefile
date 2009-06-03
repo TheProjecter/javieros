@@ -30,8 +30,10 @@ clean:
 	rm -f *.o os.bin
 
 install:
-	mount ./floppy.img /mnt/jos -o loop
-	rm -f /mnt/jos/boot/os.bin
-	install ./os.bin /mnt/jos/boot
-	umount /mnt/jos
+	mkdir /mnt/javieros
+	mount ./floppy.img /mnt/javieros -o loop
+	rm -f /mnt/javieros/boot/os.bin
+	install ./os.bin /mnt/javieros/boot
+	umount /mnt/javieros
+	rm -rf /mnt/javieros
 	sync

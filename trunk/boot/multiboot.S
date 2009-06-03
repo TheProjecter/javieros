@@ -36,11 +36,6 @@ multiboot_entry:
 
 	/* save the magic value */
 	movl %eax, TO_PA(multiboot_magic)
-	/* save the info structure */
-	movl %ebx, %esi
-	movl $TO_PA(mbi_buffer), %edi
-	movl $MBI_ROUNDEDUP_SIZE, %ecx
-	rep movsb
 
 	/* clear BSS */
 	xorl %eax, %eax
@@ -50,13 +45,12 @@ multiboot_entry:
 	rep
 	stosb
 
-	/* save mmap table */
-	movl 11*4(%ebx), %ecx	/* mmap_length: see multiboot_info structure */
-	movl 12*4(%ebx), %esi	/* mmap_addr */
-	movl %ecx, TO_PA(mmap_table_length)
-	movl $TO_PA(mmap_table), %edi
-	rep movsl
-	
+	/* save the multiboot info structure */
+	movl %ebx, %esi
+	movl $TO_PA(mbi_buffer), %edi
+	movl $MBI_ROUNDEDUP_SIZE, %ecx
+	rep movsb
+
 	/* init page tables */
 	movl $TO_PA(pg0), %edi
 	movl $007, %eax		/* PRESENT+RW+USER */
