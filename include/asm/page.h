@@ -9,4 +9,12 @@
 #define TO_PA(x)	((x) - PAGE_OFFSET)
 #define TO_VA(x)	((x) + PAGE_OFFSET)
 
+#ifndef __ASM__
+
+#define PAGE_SHIFT (12)
+#define PAGE_SIZE (1 << PAGE_SHIFT)
+#define PAGE_MASK (~(PAGE_SIZE - 1))
+
+#endif
+
 #endif /* PAGE_H */
